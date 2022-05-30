@@ -1,4 +1,4 @@
-package com.example.samsar.securite;
+package com.example.semsar3.securite;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

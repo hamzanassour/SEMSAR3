@@ -1,4 +1,4 @@
-package com.example.samsar.entities;
+package com.example.semsar3.entities;
 
 
 import lombok.AllArgsConstructor;

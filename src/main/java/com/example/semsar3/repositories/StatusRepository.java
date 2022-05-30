@@ -1,7 +1,8 @@
-package com.example.samsar.repositories;
+package com.example.semsar3.repositories;
 
-import com.example.samsar.entities.StatusLogement;
+
+import com.example.semsar3.entities.StatusLogement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StatusRepository extends JpaRepository<StatusLogement ,Long> {
+public interface StatusRepository extends JpaRepository<StatusLogement,Long> {
 }

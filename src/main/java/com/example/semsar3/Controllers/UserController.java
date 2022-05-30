@@ -1,7 +1,7 @@
-package com.example.samsar.Controllers;
+package com.example.semsar3.Controllers;
 
-import com.example.samsar.entities.AppUser;
-import com.example.samsar.repositories.UserRepository;
+import com.example.semsar3.entities.AppUser;
+import com.example.semsar3.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +17,17 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository ;
+
     @ResponseBody
     @RequestMapping("/all")
     public List<AppUser> users(){
 
-        return (List<AppUser>) userRepository.findAll();
+        return userRepository.findAll();
     }
     // when user click sign up the sign up form will be given
     @RequestMapping("/creerCompte")
-    public String createAccount(){
+    public String createAccount()
+    {
         return "SignUp";
     }
     //
