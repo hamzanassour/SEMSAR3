@@ -19,6 +19,4 @@ public class Rolle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @ManyToMany
-    List<AppUser> users ;
 }

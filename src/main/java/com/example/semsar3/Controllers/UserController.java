@@ -1,6 +1,6 @@
 package com.example.semsar3.Controllers;
 
-import com.example.semsar3.entities.AppUser;
+import com.example.semsar3.entities.User;
 import com.example.semsar3.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/all")
-    public List<AppUser> users(){
+    public List<User> users(){
 
         return userRepository.findAll();
     }
@@ -32,7 +32,7 @@ public class UserController {
     }
     //
     @RequestMapping("/enregistrer")
-    public String enregestrercompte(@RequestBody AppUser appUser){
+    public String enregestrercompte(@RequestBody User appUser){
         userRepository.save(appUser);
         return "login";
     }

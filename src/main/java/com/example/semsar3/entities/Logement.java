@@ -1,6 +1,7 @@
 package com.example.semsar3.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Logement {
     private String adress;
     private int nbr_de_coloc;
     @OneToMany(mappedBy ="logement" )
+
     private List<Media> medias ;
     @OneToMany(mappedBy = "logement")
     private List<Demande> demandes;
@@ -33,8 +35,10 @@ public class Logement {
     @ManyToOne
     private StatusLogement status;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Ville ville;
     @ManyToOne
-    private AppUser user;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
 
 }
