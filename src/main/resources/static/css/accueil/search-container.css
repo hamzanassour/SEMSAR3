@@ -1,0 +1,47 @@
+.search-container{
+    height: 38vh;
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+
+.search-form-container{
+    width: 90%;
+    height: 13vh;
+}
+
+.search-crt{
+    display: flex;
+    height: 13vh;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px #379683 solid;
+    border-radius: 100px;
+}
+
+.input-fields{
+    width: 30%;
+    height: 8vh;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    background-color: hsl(210, 91%, 22%);
+    color: white;
+    padding: 10px;
+}
+
+.submit-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 13vh;
+}
+
+.submit-btn{
+    width: 30%;
+    height: 8vh;
+    border-radius: 50px;
+    border: none;
+    background-color: #05386b;
+    color: white;
+}

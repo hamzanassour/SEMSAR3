@@ -1,0 +1,57 @@
+.nav-bar{
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container{
+    width: 15%;
+    height: 10vh;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-content{
+    font-size: xx-large;
+    color: #EDF5E1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-container{
+    /* background-color: #52616b; */
+    width: 40%;
+    height: 10vh;
+    margin: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.se-connecter-container{
+    background-color: #05386b;
+    width: 40%;
+    height: 8vh;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.s_inscrire-container{
+    background-color: #05386b;
+    width: 40%;
+    height: 8vh;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
