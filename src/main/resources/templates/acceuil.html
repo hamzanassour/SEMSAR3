@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../../semssar-front/client/css/accueil/nav-bar.css">
-    <link rel="stylesheet" href="../../../../../semssar-front/client/css/accueil/main.css">
-    <link rel="stylesheet" href="../../../../../semssar-front/client/css/accueil/search-container.css">
-    <link rel="stylesheet" href="../../../../../semssar-front/client/css/accueil/slogan-container.css">
-    <link rel="stylesheet" href="../../../../../semssar-front/client/css/accueil/footer-container.css">
+    <link rel="stylesheet" >
+    <link rel="stylesheet" href="/css/accueil/main.css">
+    <link rel="stylesheet" href="/css/accueil/nav-bar.css">
+    <link rel="stylesheet" href="/css/accueil/search-container.css">
+    <link rel="stylesheet" href="/css/accueil/slogan-container.css">
+    <link rel="stylesheet" href="/css/accueil/footer-container.css">
     
     <title>Accueil</title>
 </head>
@@ -35,16 +36,16 @@
         <div class="search-form-container">
             <form action="#">
                 <div class="search-crt">
-                    <select name="city" id="city" class="input-fields" >
-                        <option value="ait ishaq">ait ishaq</option>
-                        <option value="ait ishaq">ait ishaq</option>
-                        <option value="ait ishaq">ait ishaq</option>
+                    <select name="city" id="city" class="input-fields"  >
+                        <option th:text="Ville"></option>
+                        <option  th:each="v : ${villes}" th:value="ville"  th:text="${v.nom}"></option>
                     </select>
+
                     <select name="type" id="type" class="input-fields">
-                        <option value="ait ishaq">ait ishaq</option>
-                        <option value="ait ishaq">ait ishaq</option>
-                        <option value="ait ishaq">ait ishaq</option>
+                        <option th:text="Type"></option>
+                        <option th:each="t :${types}" th:value="type"  th:text="${t.typeLog}"></option>
                     </select>
+
                     <input type="submit" class="submit-btn" value="Rechercher">
                 </div>
             </form>
