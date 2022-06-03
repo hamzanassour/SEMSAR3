@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface LogementRepository extends JpaRepository<Logement, Long> {
 
-   List<Logement> findLogementsByVilleNomAndTypeTypeLog(String villeName , String type);
+   Page<Logement> findLogementsByVilleNomAndTypeTypeLog(String villeName , String type , Pageable pageable );
 
 }
