@@ -7,7 +7,7 @@ import com.example.semsar3.entities.Rolle;
 
 import java.util.List;
 
-public interface serviceApp {
+public interface ServiceApp {
     User addAppUser(User appUser);
     Rolle addRolle(Rolle rolle);
     void addRolleToUser(String username , String rolleName );

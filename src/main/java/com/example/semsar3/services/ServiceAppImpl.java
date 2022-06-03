@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Service
 @Transactional
-public class ServiceAppImpl implements serviceApp {
+public class ServiceAppImpl implements ServiceApp {
 
     UserRepository appUserRepository;
     RolleRepository rolleRepository;
