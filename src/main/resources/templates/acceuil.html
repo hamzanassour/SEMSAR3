@@ -34,16 +34,14 @@
 
     <div class="search-container">
         <div class="search-form-container">
-            <form action="#">
+            <form  th:action="@{find}" >
                 <div class="search-crt">
-                    <select name="city" id="city" class="input-fields"  >
-                        <option th:text="Ville"></option>
-                        <option  th:each="v : ${villes}" th:value="ville"  th:text="${v.nom}"></option>
+                    <select name="ville" id="city" class="input-fields"  >
+                        <option  th:each="v : ${villes}"  th:text="${v.nom}"></option>
                     </select>
 
                     <select name="type" id="type" class="input-fields">
-                        <option th:text="Type"></option>
-                        <option th:each="t :${types}" th:value="type"  th:text="${t.typeLog}"></option>
+                        <option th:each="t :${types}"   th:text="${t.typeLog}" ></option>
                     </select>
 
                     <input type="submit" class="submit-btn" value="Rechercher">

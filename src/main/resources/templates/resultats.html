@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/accueil/nav-bar.css">
-    <link rel="stylesheet" href="css/accueil/main.css">
-    <link rel="stylesheet" href="css/accueil/search-container.css">
-    <link rel="stylesheet" href="css/accueil/footer-container.css">
-    <link rel="stylesheet" href="css/resultats/results-container.css">
+    <link rel="stylesheet" href="/css/accueil/nav-bar.css">
+    <link rel="stylesheet" href="/css/accueil/main.css">
+    <link rel="stylesheet" href="/css/accueil/search-container.css">
+    <link rel="stylesheet" href="/css/accueil/footer-container.css">
+    <link rel="stylesheet" href="/css/resultats/results-container.css">
     <title>Accueil</title>
 </head>
 <body>
@@ -26,21 +26,18 @@
                 </a>    
             </div>
         </div>
-    
         <div class="search-container">
             <div class="search-form-container">
-                <form action="#">
+                <form  th:action="@{find}" >
                     <div class="search-crt">
-                        <select name="city" id="city" class="input-fields" >
-                            <option value="ait ishaq">ait ishaq</option>
-                            <option value="ait ishaq">ait ishaq</option>
-                            <option value="ait ishaq">ait ishaq</option>
+                        <select name="ville" id="city" class="input-fields"  >
+                            <option  th:each="v : ${villes}"  th:text="${v.nom}"></option>
                         </select>
+
                         <select name="type" id="type" class="input-fields">
-                            <option value="ait ishaq">ait ishaq</option>
-                            <option value="ait ishaq">ait ishaq</option>
-                            <option value="ait ishaq">ait ishaq</option>
+                            <option th:each="t :${types}"   th:text="${t.typeLog}" ></option>
                         </select>
+
                         <input type="submit" class="submit-btn" value="Rechercher">
                     </div>
                 </form>
@@ -54,22 +51,21 @@
         </div>
 
         <div class="result-container">
-            <div class="results-content">     
+            <div class="results-content" th:each="log :${logements}"  >
                 <div class="result-card">
                     <div class="result-card-img">
                         <h1>Image</h1>
                     </div>
                     <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
+                        <div class="result-title"><h3 th:text="${log.titre}"></h3></div>
+                        <p class="result-description-text" th:text="${log.description}">
+
                         </p>
                         <div class="result-details">
                             <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
+                                <i class="fa-solid fa-location-arrow" th:text="${log.ville.nom}"></i>
                             </div>
-                            <div class="type-result">Type: Villa</div>
+                            <div class="type-result" th:text="${log.type.typeLog}" ></div>7
                         </div>                           
                     </div>
                     <div class="date-of-pub">
@@ -77,122 +73,6 @@
                     </div>
                 </div>
             </div>
-            <div class="results-content">     
-                <div class="result-card">
-                    <div class="result-card-img">
-                        <h1>Image</h1>
-                    </div>
-                    <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                        </p>
-                        <div class="result-details">
-                            <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
-                            </div>
-                            <div class="type-result">Type: Villa</div>
-                        </div>                           
-                    </div>
-                    <div class="date-of-pub">
-                        Postee: le 1 janvier 2018
-                    </div>
-                </div>
-            </div>    
-            <div class="results-content">     
-                <div class="result-card">
-                    <div class="result-card-img">
-                        <h1>Image</h1>
-                    </div>
-                    <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                        </p>
-                        <div class="result-details">
-                            <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
-                            </div>
-                            <div class="type-result">Type: Villa</div>
-                        </div>                           
-                    </div>
-                    <div class="date-of-pub">
-                        Postee: le 1 janvier 2018
-                    </div>
-                </div>
-            </div>    
-            <div class="results-content">     
-                <div class="result-card">
-                    <div class="result-card-img">
-                        <h1>Image</h1>
-                    </div>
-                    <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                        </p>
-                        <div class="result-details">
-                            <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
-                            </div>
-                            <div class="type-result">Type: Villa</div>
-                        </div>                           
-                    </div>
-                    <div class="date-of-pub">
-                        Postee: le 1 janvier 2018
-                    </div>
-                </div>
-            </div>    
-            <div class="results-content">     
-                <div class="result-card">
-                    <div class="result-card-img">
-                        <h1>Image</h1>
-                    </div>
-                    <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                        </p>
-                        <div class="result-details">
-                            <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
-                            </div>
-                            <div class="type-result">Type: Villa</div>
-                        </div>                           
-                    </div>
-                    <div class="date-of-pub">
-                        Postee: le 1 janvier 2018
-                    </div>
-                </div>
-            </div>    
-            <div class="results-content">     
-                <div class="result-card">
-                    <div class="result-card-img">
-                        <h1>Image</h1>
-                    </div>
-                    <div class="result-card-description">
-                        <div class="result-title"><h3>Dar nadya ajmi</h3></div>
-                        <p class="result-description-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                        </p>
-                        <div class="result-details">
-                            <div class="city">
-                                <i class="fa-solid fa-location-arrow"></i>
-                                City: Marrakech
-                            </div>
-                            <div class="type-result">Type: Villa</div>
-                        </div>                           
-                    </div>
-                    <div class="date-of-pub">
-                        Postee: le 1 janvier 2018
-                    </div>
-                </div>
-            </div>    
-
         </div>
 
     
