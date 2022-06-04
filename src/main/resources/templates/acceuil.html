@@ -38,10 +38,12 @@
                 <form  th:action="@{find}" >
                     <div class="search-crt">
                         <select name="ville" id="city" class="input-fields"  >
+                            <option disabled="disabled"   selected="selected">Choisisez chi haja</option>
                             <option  th:each="v : ${villes}"  th:text="${v.nom}"></option>
                         </select>
 
                         <select name="type" id="type" class="input-fields">
+                            <option disabled="disabled"   selected="true">Choisisez chi haja</option>
                             <option th:each="t :${types}"   th:text="${t.typeLog}" ></option>
                         </select>
 
