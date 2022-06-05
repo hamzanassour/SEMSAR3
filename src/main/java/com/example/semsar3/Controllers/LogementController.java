@@ -28,12 +28,27 @@ public class LogementController {
     TypeRepository typeRepository;
 
     @RequestMapping("/find")
-    public String  findLogement(Model model  , @RequestParam(value = "page"  , defaultValue = "0" )  int page , @RequestParam(value = "size" ,defaultValue = "6") int size , String ville , String type){
+
+    public String  findLogement(Model model  , @RequestParam(value = "page"  , defaultValue = "0" )  int page ,
+                                @RequestParam(value = "size" ,defaultValue = "6") int size ,
+                                @RequestParam(value = "ville" , defaultValue = "Choisiser") String ville ,
+                                @RequestParam(value = "type" , defaultValue = "Choisiser") String type){
+
+        // test coming ville , type variables
+        //System.out.println(ville);
+        //System.out.println(type);
+
         model.addAttribute("villes" ,villeRepository.findAll() );
         model.addAttribute("types" , typeRepository.findAll() );
         Page<Logement> logements = logementRepository.findLogementsByVilleNomAndTypeTypeLog(ville , type , PageRequest.of(page,size));
         model.addAttribute("logements" , logements);
+        model.addAttribute("ville" , ville);
+        model.addAttribute("type" , type);
+        model.addAttribute("pages" , new int[logements.getTotalPages()]);
+        model.addAttribute("pageCourant" , page);
         return  "resultats";
+
+
     }
 
 
