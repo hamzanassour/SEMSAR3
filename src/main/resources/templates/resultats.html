@@ -78,23 +78,11 @@
             </div>
         </div>
 
-        <div class="results-pagination">
-            <div class="results-pagination-container">
-                <a href="#">
-                    <div class="page-anchor">
-                        <span class="page-anchor-text">1</span>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="page-anchor">
-                        <span class="page-anchor-text">1</span>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="page-anchor">
-                        <span class="page-anchor-text">1</span>
+        <div class="results-pagination" >
+            <div class="results-pagination-container" >
+                <a th:href="@{find(page=${status.index} , ville=${ville} , type=${type})}" th:each="page,status : ${pages}">
+                    <div  class="page-anchor"   >
+                        <span  class="page-anchor-text" th:text="${status.index}" th:style="${status.index==pageCourant? 'color :#5cdb95 ':'' }"></span>
                     </div>
                 </a>
             </div>
