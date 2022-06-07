@@ -1,0 +1,94 @@
+.result-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.relative-results{
+    height: 120vh;
+    width: 25%;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    /* border-radius: 10px; */
+}
+
+.result-details-container {
+    height: 125vh;
+    width: 70%;
+    background-color: white;
+}
+
+.card-img-container{
+    width: 100%;
+    height: 44vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details-img{
+    width: 30%;
+    background-color: #05386b;
+    height: 40vh;
+    margin-top: 1%;
+    color: white;
+    font-size: xx-large;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-content-container{
+}
+
+.details-content {
+}
+
+.details-title {
+    width: 90%;
+    border-bottom: 1px solid black;
+    margin: 2%;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-title .primary-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.details-description{
+    width: 90%;
+    height: 45vh;
+    margin: 2%;
+    padding: 1%;
+    border-bottom: 1px solid black;
+}
+
+.details-description .primary-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.description-text-content{
+    display: block;
+    margin-top: 3%;
+}
+
+.details-content form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-content form input {
+    border: none;
+    width: 40%;
+    height: 5vh;
+    background-color: #05386b;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+}

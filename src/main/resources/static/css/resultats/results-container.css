@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
 
 .results-header h2 {
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .result-card-img{
@@ -44,7 +44,7 @@
     justify-content: center;
     align-items: center;
     margin: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .result-card-img h1{

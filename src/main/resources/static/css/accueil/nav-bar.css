@@ -32,9 +32,9 @@
 
 .se-connecter-container{
     background-color: #05386b;
-    width: 40%;
-    height: 8vh;
-    border-radius: 50px;
+    width: 35%;
+    height: 7vh;
+    /* border-radius: 50px; */
     text-decoration: none;
     color: white;
     font-size: larger;
@@ -45,9 +45,9 @@
 
 .s_inscrire-container{
     background-color: #05386b;
-    width: 40%;
-    height: 8vh;
-    border-radius: 50px;
+    width: 35%;
+    height: 7vh;
+    /* border-radius: 50px; */
     text-decoration: none;
     color: white;
     font-size: larger;
