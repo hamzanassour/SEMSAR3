@@ -52,6 +52,12 @@ public class LogementController {
     }
 
 
+    @RequestMapping(value = "/detail")
+    public String detail(){
+        return "result-details";
+    }
+
+
 
 
 

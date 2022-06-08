@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,17 +21,17 @@
                 <div class="sign-up-form-description">
                     Veuillez remplir Tous les champs *
                 </div>
-                <form action="">
+                <form th:action="@{ajouterUser}" th:method="get">
                     <div class="firstname-lastname">
-                        <input type="text" placeholder="Prenom" name="firstname" class="sign-up-input-field">
-                        <input type="text" placeholder="Nom" name="lastname" class="sign-up-input-field">    
+                        <input type="text" placeholder="Prenom" name="prenom" class="sign-up-input-field" th:value="${user.prenom}">
+                        <input type="text" placeholder="Nom" name="nom" class="sign-up-input-field" th:value="${user.nom}" >
                     </div>
-                    <input type="text" name="username" placeholder="Votre Nom d'utilisateur: Ex(dihamza, ...)" class="sign-up-input-field">
-                    <input type="text" name="email" placeholder="Votre Email: Ex(atlas@lahihafdekMavalider.com)" class="sign-up-input-field">
-                    <input type="text" name="telephone" placeholder="Votre Telephone: Ex(+212 651942612)" class="sign-up-input-field">
-                    <input type="text" name="password" placeholder="Votre Password: Condition(Il faux respecter ...)" class="sign-up-input-field">
-                    <input type="text" name="re-password" placeholder="Confirmer votre mot de pass" class="sign-up-input-field">
-                    <input type="submit" value="S'inscrire" placeholder="Confirmer votre mot de pass" class="sign-up-submit sign-up-input-field">
+                    <input type="text" name="username" placeholder="Votre Nom d'utilisateur: Ex(dihamza, ...)" class="sign-up-input-field"  th:value="${user.username}">
+                    <input type="text" name="email" placeholder="Votre Email: Ex(atlas@lahihafdekMavalider.com)" class="sign-up-input-field" th:value="${user.email}">
+                    <input type="text" name="phone" placeholder="Votre Telephone: Ex(+212 651942612)" class="sign-up-input-field" th:value="${user.phone}">
+                    <input type="text" name="password" placeholder="Votre Password: Condition(Il faux respecter ...)" class="sign-up-input-field" th:value="${user.password}">
+                    <input type="text" name="password" placeholder="Confirmer votre mot de pass" class="sign-up-input-field" th:value="${user.password}">
+                    <input type="submit" value="S'inscrire" class="sign-up-submit sign-up-input-field">
                 </form>
             </div>
         </div>

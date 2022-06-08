@@ -2,8 +2,10 @@ package com.example.semsar3.Controllers;
 
 import com.example.semsar3.entities.User;
 import com.example.semsar3.repositories.UserRepository;
+import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,30 +13,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
 
     @Autowired
     UserRepository userRepository ;
+    @Autowired
+    ServiceAppImpl serviceApp;
 
-    @ResponseBody
-    @RequestMapping("/all")
-    public List<User> users(){
-
-        return userRepository.findAll();
-    }
-    // when user click sign up the sign up form will be given
-    @RequestMapping("/creerCompte")
-    public String createAccount()
+    @RequestMapping("/signup")
+    public String createAccount(@ModelAttribute("user") User user)
     {
-        return "SignUp";
+        return "s_inscrire";
     }
-    //
-    @RequestMapping("/enregistrer")
-    public String enregestrercompte(@RequestBody User appUser){
-        userRepository.save(appUser);
-        return "login";
+
+    @RequestMapping("/ajouterUser")
+    public String save(User user){
+        serviceApp.addAppUser(user);
+        return "redirect:login";
+    }
+
+    @RequestMapping("/login")
+    public String login()
+    {
+        return "se_connecter";
     }
 
 
