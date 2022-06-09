@@ -24,13 +24,20 @@
                 <form th:action="@{ajouterUser}" th:method="get">
                     <div class="firstname-lastname">
                         <input type="text" placeholder="Prenom" name="prenom" class="sign-up-input-field" th:value="${user.prenom}">
+                        <span th:errors="${user.prenom}"></span>
                         <input type="text" placeholder="Nom" name="nom" class="sign-up-input-field" th:value="${user.nom}" >
+                        <span th:errors="${user.nom}"></span>
                     </div>
                     <input type="text" name="username" placeholder="Votre Nom d'utilisateur: Ex(dihamza, ...)" class="sign-up-input-field"  th:value="${user.username}">
+                    <span th:errors="${user.username}"></span>
                     <input type="text" name="email" placeholder="Votre Email: Ex(atlas@lahihafdekMavalider.com)" class="sign-up-input-field" th:value="${user.email}">
+                    <span th:errors="${user.email}"></span>
                     <input type="text" name="phone" placeholder="Votre Telephone: Ex(+212 651942612)" class="sign-up-input-field" th:value="${user.phone}">
+                    <span th:errors="${user.phone}"></span>
                     <input type="text" name="password" placeholder="Votre Password: Condition(Il faux respecter ...)" class="sign-up-input-field" th:value="${user.password}">
+                    <span th:errors="${user.password}"></span>
                     <input type="text" name="password" placeholder="Confirmer votre mot de pass" class="sign-up-input-field" th:value="${user.password}">
+                    <span th:errors="${user.password}"></span>
                     <input type="submit" value="S'inscrire" class="sign-up-submit sign-up-input-field">
                 </form>
             </div>
