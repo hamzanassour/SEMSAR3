@@ -26,8 +26,7 @@ public class Logement {
     private String description;
     private String adress;
     private int nbr_de_coloc;
-    @OneToMany(mappedBy ="logement" )
-
+    @OneToMany
     private List<Media> medias ;
     @OneToMany(mappedBy = "logement")
     private List<Demande> demandes;

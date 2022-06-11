@@ -1,6 +1,7 @@
 package com.example.semsar3.Controllers;
 
 import com.example.semsar3.entities.Logement;
+import com.example.semsar3.entities.Media;
 import com.example.semsar3.repositories.LogementRepository;
 import com.example.semsar3.repositories.TypeRepository;
 import com.example.semsar3.repositories.VilleRepository;
@@ -10,10 +11,18 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,6 +35,8 @@ public class LogementController {
     VilleRepository villeRepository;
     @Autowired
     TypeRepository typeRepository;
+
+    public  static  String uploadDirLogementImages = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\LogementImages";
 
     @RequestMapping("/find")
 
@@ -58,6 +69,34 @@ public class LogementController {
     }
 
 
+
+    @RequestMapping("/addLogementForm")
+    public String logementForm(@ModelAttribute("Logement") Logement logement){
+
+        return "xxxx";
+    }
+    @RequestMapping("/ajouterLogement")
+    public String save(Logement logement , @RequestParam("images") MultipartFile[] images,
+                       @RequestParam("imageP") MultipartFile imageP) throws IOException {
+
+        List<Media> medias = new ArrayList<>();
+        String name = StringUtils.cleanPath(imageP.getOriginalFilename());
+        Path filenameAndPath = Paths.get(uploadDirLogementImages,name);
+        Files.write(filenameAndPath , imageP.getBytes());
+        name="LogementImages/"+name;
+        medias.add(new Media(null , name));
+
+        for (MultipartFile image : images){
+            String name1 = StringUtils.cleanPath(imageP.getOriginalFilename());
+            Path filenameAndPath1 = Paths.get(uploadDirLogementImages,name1);
+            Files.write(filenameAndPath1 , image.getBytes());
+            name1="LogementImages/"+name1;
+            medias.add(new Media(null , name1));
+        }
+        logement.setMedias(medias);
+        logementRepository.save(logement);
+        return "redirect:/addLogementForm";
+    }
 
 
 

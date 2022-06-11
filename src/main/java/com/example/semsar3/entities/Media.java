@@ -18,6 +18,4 @@ public class Media {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String path;
-    @ManyToOne
-    Logement logement;
 }
