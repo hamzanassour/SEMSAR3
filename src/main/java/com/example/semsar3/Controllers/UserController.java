@@ -5,13 +5,16 @@ import com.example.semsar3.repositories.UserRepository;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -23,6 +26,8 @@ public class UserController {
     @Autowired
     ServiceAppImpl serviceApp;
 
+    public static  String uploadDirUserProfiles = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\userProfiles";
+
     @RequestMapping("/signup")
     public String createAccount(@ModelAttribute("user") User user)
     {
@@ -30,14 +35,15 @@ public class UserController {
     }
 
     @RequestMapping("/ajouterUser")
-    public String save(@Valid  User user , BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return "s_inscrire";
-        }
+    public String save(@ModelAttribute("user") User user , @RequestParam("pdp") MultipartFile multipartFile) throws IOException {
+        String name =StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        Path filenameAndPath = Paths.get(uploadDirUserProfiles,name);
+        Files.write(filenameAndPath , multipartFile.getBytes());
+        name="userProfiles/"+name;
+        user.setImg(name);
         serviceApp.addAppUser(user);
-        return "redirect:/login";
+        return "test";
     }
-
     @RequestMapping("/login")
     public String login()
     {

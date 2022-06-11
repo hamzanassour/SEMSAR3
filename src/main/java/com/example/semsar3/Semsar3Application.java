@@ -1,5 +1,6 @@
 package com.example.semsar3;
 
+import com.example.semsar3.Controllers.UserController;
 import com.example.semsar3.entities.User;
 import com.example.semsar3.entities.Rolle;
 import com.example.semsar3.repositories.LogementRepository;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.File;
 import java.util.ArrayList;
 
 @SpringBootApplication
@@ -22,6 +24,8 @@ public class Semsar3Application {
 
     public static void main(String[] args) {
 
+
+        new File(UserController.uploadDirUserProfiles).mkdir();
         SpringApplication.run(Semsar3Application.class, args);
 
     }

@@ -21,7 +21,7 @@
                 <div class="sign-up-form-description">
                     Veuillez remplir Tous les champs *
                 </div>
-                <form th:action="@{ajouterUser}" th:method="get">
+                <form th:action="@{ajouterUser}" th:method="post" enctype="multipart/form-data">
                     <div class="firstname-lastname">
                         <input type="text" placeholder="Prenom" name="prenom" class="sign-up-input-field" th:value="${user.prenom}">
                         <span th:errors="${user.prenom}"></span>
@@ -38,6 +38,7 @@
                     <span th:errors="${user.password}"></span>
                     <input type="text" name="password" placeholder="Confirmer votre mot de pass" class="sign-up-input-field" th:value="${user.password}">
                     <span th:errors="${user.password}"></span>
+                    <input type="file" name="pdp" >
                     <input type="submit" value="S'inscrire" class="sign-up-submit sign-up-input-field">
                 </form>
             </div>

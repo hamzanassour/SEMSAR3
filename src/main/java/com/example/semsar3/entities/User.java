@@ -20,21 +20,21 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    @Size(min = 3 , max = 10)
+    //@NotEmpty
+    //@Size(min = 3 , max = 10)
     private String nom ;
-    @NotEmpty
-    @Size(min = 3 , max = 10)
+    //@NotEmpty
+    //@Size(min = 3 , max = 10)
     private String prenom;
-    @NotEmpty
-    @Size(min = 10 )
+    //@NotEmpty
+    //@Size(min = 10 )
     private String email;
-    @NotEmpty
-    @Size(min = 10 )
+    //@NotEmpty
+    //@Size(min = 10 )
     private String phone;
-    @NotEmpty
+    //@NotEmpty
     private String username;
-    @NotEmpty
+    //@NotEmpty
     private String password;
     private String img;
     @OneToMany(mappedBy = "user")
