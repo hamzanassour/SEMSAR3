@@ -26,7 +26,8 @@ public class UserController {
     @Autowired
     ServiceAppImpl serviceApp;
 
-    public static  String uploadDirUserProfiles = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\userProfiles";
+
+    public static  String uploadDirUserProfiles = System.getProperty("user.dir")+"\\target\\classes\\static\\userProfiles";
 
     @RequestMapping("/signup")
     public String createAccount(@ModelAttribute("user") User user)

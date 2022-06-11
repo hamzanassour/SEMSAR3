@@ -26,7 +26,7 @@ public class Logement {
     private String description;
     private String adress;
     private int nbr_de_coloc;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Media> medias ;
     @OneToMany(mappedBy = "logement")
     private List<Demande> demandes;

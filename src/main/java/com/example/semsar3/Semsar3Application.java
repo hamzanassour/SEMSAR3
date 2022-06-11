@@ -1,6 +1,8 @@
 package com.example.semsar3;
 
+import com.example.semsar3.Controllers.LogementController;
 import com.example.semsar3.Controllers.UserController;
+import com.example.semsar3.entities.Logement;
 import com.example.semsar3.entities.User;
 import com.example.semsar3.entities.Rolle;
 import com.example.semsar3.repositories.LogementRepository;
@@ -26,6 +28,7 @@ public class Semsar3Application {
 
 
         new File(UserController.uploadDirUserProfiles).mkdir();
+        new File(LogementController.uploadDirLogementImages).mkdir();
         SpringApplication.run(Semsar3Application.class, args);
 
     }

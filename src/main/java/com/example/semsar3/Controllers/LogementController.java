@@ -36,7 +36,7 @@ public class LogementController {
     @Autowired
     TypeRepository typeRepository;
 
-    public  static  String uploadDirLogementImages = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\LogementImages";
+    public  static  String uploadDirLogementImages = System.getProperty("user.dir")+"\\target\\classes\\static\\LogementImages";
 
     @RequestMapping("/find")
 
@@ -73,21 +73,21 @@ public class LogementController {
     @RequestMapping("/addLogementForm")
     public String logementForm(@ModelAttribute("Logement") Logement logement){
 
-        return "xxxx";
+        return "addLogement";
     }
     @RequestMapping("/ajouterLogement")
-    public String save(Logement logement , @RequestParam("images") MultipartFile[] images,
+    public String save(@ModelAttribute("logement") Logement logement , @RequestParam("images") MultipartFile[] images,
                        @RequestParam("imageP") MultipartFile imageP) throws IOException {
 
         List<Media> medias = new ArrayList<>();
         String name = StringUtils.cleanPath(imageP.getOriginalFilename());
-        Path filenameAndPath = Paths.get(uploadDirLogementImages,name);
+        Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
         Files.write(filenameAndPath , imageP.getBytes());
         name="LogementImages/"+name;
         medias.add(new Media(null , name));
 
         for (MultipartFile image : images){
-            String name1 = StringUtils.cleanPath(imageP.getOriginalFilename());
+            String name1 = StringUtils.cleanPath(image.getOriginalFilename());
             Path filenameAndPath1 = Paths.get(uploadDirLogementImages,name1);
             Files.write(filenameAndPath1 , image.getBytes());
             name1="LogementImages/"+name1;
@@ -95,7 +95,7 @@ public class LogementController {
         }
         logement.setMedias(medias);
         logementRepository.save(logement);
-        return "redirect:/addLogementForm";
+        return "test2";
     }
 
 
