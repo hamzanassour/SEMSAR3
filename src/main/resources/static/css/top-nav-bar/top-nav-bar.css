@@ -1,0 +1,74 @@
+.top-nav-bar-container{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+
+}
+
+.top-nav-bar{
+    height: 10vh;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container{
+    width: 15%;
+    height: 10vh;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-content{
+    font-size: xx-large;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-operations{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.add-annonce{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    height: 6vh;
+    width: 50%;
+    border: 1px solid rgb(210, 164, 0);
+    font-weight: bold;
+    font-size: small;
+}
+
+.consult-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    height: 6vh;
+    width: 50%;
+    font-size: small;
+    font-weight: bold;
+}
+
+.nav-bar-profile-image-container {
+    width: 25%;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar-profile-image-container .image-cover-circle{
+    width: 60%;
+    object-fit: cover;
+    border-radius: 50%;
+}

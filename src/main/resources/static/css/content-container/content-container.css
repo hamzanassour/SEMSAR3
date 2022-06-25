@@ -1,0 +1,12 @@
+.content-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container{
+    width: 70%;
+    margin: 5%;
+    background-color: white;
+    border: 1px solid black;
+}

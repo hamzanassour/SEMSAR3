@@ -1,0 +1,12 @@
+.slogan-container{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slogan-content{
+    color: black;
+    font-size:x-large;
+    text-align: center;
+}

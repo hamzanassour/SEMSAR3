@@ -1,0 +1,99 @@
+.results-content{
+    display: flex;
+    justify-content: space-around;
+    margin: 2%;
+}
+
+.results-header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+.results-header{
+    height: 5vh;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(210, 164, 0);
+}
+
+.results-header h2 {
+    color: black;
+    font-size:small;
+}
+
+.result-card{
+    width: 90%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(210, 164, 0);
+}
+
+.result-card-img{
+    width: 20%;
+    height: 21vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.image-cover-circle{
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-cover{
+    width: 100%;
+    object-fit: cover;
+}
+
+.result-card-description{
+    width: 60%;
+    height: 21vh;
+}
+
+.result-card-description a{
+    text-decoration: none;
+}
+
+.result-title h3{
+    margin: 1%;
+    color: rgb(210, 164, 0);
+    text-decoration: none;
+}
+
+.result-description-text{
+    margin: 1%;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.result-details{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1%;
+}
+
+.city{
+    width: 40%;
+    font-size: small;
+    font-weight: 800;
+}
+
+.type-result{
+    font-size: small;
+    font-weight: 800;
+}
+
+.date-of-pub{
+    font-size: small;
+    border-left: 1px solid #05386b;
+    padding: 2%;
+}

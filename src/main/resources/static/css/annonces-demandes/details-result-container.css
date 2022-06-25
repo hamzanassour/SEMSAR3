@@ -1,0 +1,89 @@
+.details-main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-details-container {
+    width: 90%;
+    background-color: white;
+    border: 2px solid rgb(210, 164, 0);
+    margin: 3%;
+}
+
+.card-img-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details-img{
+    width: 30%;
+    margin-top: 1%;
+    color: white;
+    font-size: xx-large;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.annonce-image .image-cover-circle{
+    width: 80%;
+}
+
+.image-cover{
+    width: 100%;
+    object-fit: cover;
+}
+
+.details-title {
+    width: 90%;
+    border-bottom: 1px solid rgb(210, 164, 0);
+    margin: 2%;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-title .primary-title {
+    font-size: large;
+    font-weight: bold;
+    color: rgb(210, 164, 0);
+}
+
+.details-description{
+    width: 90%;
+    height: 45vh;
+    margin: 2%;
+    padding: 1%;
+    border-bottom: 1px solid rgb(210, 164, 0);
+}
+
+.details-description .primary-title {
+    font-size: large;
+    font-weight: bold;
+    color: rgb(210, 164, 0);
+}
+
+.description-text-content{
+    display: block;
+    margin-top: 3%;
+}
+
+.details-content form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-content form input {
+    border: none;
+    width: 40%;
+    height: 5vh;
+    background-color: rgb(210, 164, 0);
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+}

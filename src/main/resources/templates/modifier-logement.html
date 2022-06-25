@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/top-nav-bar/top-nav-bar.css">
+    <link rel="stylesheet" href="/css/result-container/result-container.css">
+    <link rel="stylesheet" href="/css/content-container/content-container.css">
+    <link rel="stylesheet" href="/css/profile-container/profile-container.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="top-nav-bar-container">
+            <div class="top-nav-bar">
+                <div class="logo-container">
+                    <h1 class="logo-content">Semssar.ma</h1>
+                </div>  
+
+                <div class="user-operations">
+                    <a href="#" class="add-annonce">
+                        + Ajouter Annonce
+                    </a>
+
+                    <a href="#"  class="consult-profile">
+                        <div class="nav-bar-profile-image-container">
+                            <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
+                        </div> Hamza Nassour
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div class="profile-container">
+                <div class="profile-side-bar-container">
+                    <div class="profile-side-bar">
+                        <div class="profile-data">
+                            <div class="profile-img-container">
+                                <div class="profile-image">
+                                    <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                                </div>
+                            </div>
+                
+                            <div class="profile-info">
+                                <span>Hamza Nassour</span>
+                            </div>
+    
+                            <div class="profile-info">
+                                <span>+212 65103232<span>
+                            </div>
+    
+                            <div class="profile-info">
+                                <span>nassour@ensa-m.com<span>
+                            </div>
+                        </div>
+    
+                        <div class="navigation-links-container">
+                            <div class="navigation-links">
+                                <a href="#" class="navigation-link">
+                                    <span class="title">Mes Annonces ></span>
+                                </a>
+        
+                                <a href="#" class="navigation-link">
+                                    <span class="title">Mes Demandes ></span>
+                                </a>
+
+                                <a href="#" class="navigation-link">
+                                    <span class="title">Editer profile</span>
+                                </a>
+
+                                <a href="#" class="navigation-link">
+                                    <span class="title">Déconnexion</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-annonces-container">
+                    <div class="results-header-container">
+                        <div class="results-header">
+                            <h2>Modifier l'annonce</h2>
+                        </div>
+                    </div>
+
+                    <div class="sign-up-container">
+                        <div class="sign-up-form-container">
+                            <div class="sign-up-form-description">
+                                Veuillez remplir Tous les champs*
+                            </div>
+                            <form action="">
+                                <div class="annonce-fields-container">
+                                    <select placeholder="Type" name="firstname" class="sign-up-input-field">
+                                        <option value="">Villa</option>
+                                    </select>
+
+                                    <select placeholder="Type" name="firstname" class="sign-up-input-field">
+                                        <option value="">Marrakech</option>
+                                    </select>
+
+                                    <select placeholder="Type" name="firstname" class="sign-up-input-field">
+                                        <option value="">Disponible</option>
+                                    </select>
+                                </div>
+                                <input type="text" name="titre" placeholder="Titre Ex: Studio meuble a sidi abbad" class="sign-up-input-field">
+                                <input type="text" name="superficie" placeholder="Superficie Ex: 40m2" class="sign-up-input-field">
+                                <input type="text" name="prix" placeholder="Prix Ex: 2000 MAD" class="sign-up-input-field">
+                                <input type="text" name="coloc" placeholder="Nomber de colocs Ex: 20 personnes" class="sign-up-input-field">
+                                <input type="text" name="adresse" placeholder="Adresse Ex: 270 PB, Sidi abbad 1 Marrakech" class="sign-up-input-field">
+                                <textarea name="" class="logement-description" id="" cols="30" rows="10"></textarea>
+                                <div class="annonce-fields-container">
+
+                                    <label for="inputFile" class="inputFileLabel">
+                                        Image 1
+                                        <input id="inputFile" class="inputFile" type="file"/>
+                                    </label>
+
+                                    <label for="inputFile" class="inputFileLabel">
+                                        Image 2
+                                        <input id="inputFile" class="inputFile" type="file"/>
+                                    </label>
+
+                                    <label for="inputFile" class="inputFileLabel">
+                                        Image 2
+                                        <input id="inputFile" class="inputFile" type="file"/>
+                                    </label>
+                                    <input type="submit" value="Ajouter"  class="sign-up-submit sign-up-input-field">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
