@@ -1,4 +1,4 @@
-package com.example.semsar3.entities;
+package com.example.semsar3.securite.entities;
 
 
 import lombok.AllArgsConstructor;
@@ -14,11 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Ville {
+public class Rolle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @OneToMany(mappedBy = "ville")
-    private List<Logement> logements;
 }

@@ -1,21 +1,18 @@
 package com.example.semsar3.Controllers;
 
-import com.example.semsar3.entities.User;
-import com.example.semsar3.repositories.UserRepository;
+import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.repositories.UserRepository;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 @Controller
 public class UserController {

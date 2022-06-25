@@ -1,10 +1,10 @@
 package com.example.semsar3.services;
 
 
-import com.example.semsar3.entities.User;
-import com.example.semsar3.entities.Rolle;
-import com.example.semsar3.repositories.RolleRepository;
-import com.example.semsar3.repositories.UserRepository;
+import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Rolle;
+import com.example.semsar3.securite.repositories.RolleRepository;
+import com.example.semsar3.securite.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +27,6 @@ public class ServiceAppImpl implements ServiceApp {
 
     @Override
     public User addAppUser(User appUser) {
-
         String password=appUser.getPassword();
         appUser.setPassword(passwordEncoder.encode(password));
         return   appUserRepository.save(appUser);
@@ -37,15 +36,31 @@ public class ServiceAppImpl implements ServiceApp {
 
     @Override
     public Rolle addRolle(Rolle rolle) {
-
+        Rolle rolle1 =rolleRepository.findByNom(rolle.getNom());
+        if(rolle1!=null) throw  new RuntimeException("Rolle deja existe");
         return rolleRepository.save(rolle);
     }
 
     @Override
     public void addRolleToUser(String username, String rolleName) {
        User user= appUserRepository.findUserByUsername(username);
+        if(user==null) throw  new RuntimeException("User n'existe pas ");
        Rolle rolle = rolleRepository.findByNom(rolleName);
+       if(rolle==null) throw  new RuntimeException("Rolle n'existe pas");
+       user.getRolles().forEach(rolle1 -> {
+           if (rolle1.getNom().equals(rolleName)) throw  new RuntimeException("user a deja ce role");
+       });
        user.getRolles().add(rolle);
+       // c'est pas la peine de faire le save de user apres l'ajout du rolle car la method est transactional il fail update automatiquement grace a l'annotation @Trasactional
+
+    }
+    public void DeleteRolleFromUser(String username, String rolleName) {
+        User user= appUserRepository.findUserByUsername(username);
+        if(user==null) throw  new RuntimeException("User deja existe");
+        Rolle rolle = rolleRepository.findByNom(rolleName);
+        if(rolle==null) throw  new RuntimeException("Rolle n'existe pas");
+        user.getRolles().remove(rolle);
+        // c'est pas la peine de faire le save de user apres l'ajout du rolle car la method est transactional il fail update automatiquement grace a l'annotation @Trasactional
 
     }
 

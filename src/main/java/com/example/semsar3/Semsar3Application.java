@@ -2,10 +2,9 @@ package com.example.semsar3;
 
 import com.example.semsar3.Controllers.LogementController;
 import com.example.semsar3.Controllers.UserController;
-import com.example.semsar3.entities.Logement;
-import com.example.semsar3.entities.User;
-import com.example.semsar3.entities.Rolle;
 import com.example.semsar3.repositories.LogementRepository;
+import com.example.semsar3.securite.entities.Rolle;
+import com.example.semsar3.securite.entities.User;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,13 +15,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.File;
-import java.util.ArrayList;
 
 @SpringBootApplication
-public class Semsar3Application {
+public class Semsar3Application  implements CommandLineRunner{
 
      @Autowired
      LogementRepository logementRepository;
+     @Autowired
+     ServiceAppImpl serviceApp;
+
 
     public static void main(String[] args) {
 
@@ -36,6 +37,12 @@ public class Semsar3Application {
     @Bean
     PasswordEncoder passwordEncoder(){
         return  new BCryptPasswordEncoder();
+    }
+    @Override
+    public void run(String... args) throws Exception {
+
+
+
     }
 
 

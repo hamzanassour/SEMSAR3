@@ -1,13 +1,13 @@
-package com.example.semsar3.entities;
+package com.example.semsar3.securite.entities;
 
+import com.example.semsar3.entities.Demande;
+import com.example.semsar3.entities.Logement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -41,7 +41,7 @@ public class User {
     private List<Demande> demandes;
     @OneToMany(mappedBy = "user")
     private List<Logement> logements;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Rolle> rolles ;
 
 }
