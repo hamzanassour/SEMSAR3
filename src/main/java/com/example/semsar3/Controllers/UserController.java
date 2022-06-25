@@ -1,6 +1,6 @@
 package com.example.semsar3.Controllers;
 
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
 import com.example.semsar3.securite.repositories.UserRepository;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +27,13 @@ public class UserController {
     public static  String uploadDirUserProfiles = System.getProperty("user.dir")+"\\target\\classes\\static\\userProfiles";
 
     @RequestMapping("/signup")
-    public String createAccount(@ModelAttribute("user") User user)
+    public String createAccount(@ModelAttribute("user") Client user)
     {
         return "s_inscrire";
     }
 
     @RequestMapping("/ajouterUser")
-    public String save(@ModelAttribute("user") User user , @RequestParam("pdp") MultipartFile multipartFile) throws IOException {
+    public String save(@ModelAttribute("user") Client user , @RequestParam("pdp") MultipartFile multipartFile) throws IOException {
         String name =StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Path filenameAndPath = Paths.get(uploadDirUserProfiles,name);
         Files.write(filenameAndPath , multipartFile.getBytes());
@@ -42,7 +42,7 @@ public class UserController {
         serviceApp.addAppUser(user);
         return "test";
     }
-    @RequestMapping("/login")
+    @RequestMapping("/loginForm")
     public String login()
     {
         return "se_connecter";

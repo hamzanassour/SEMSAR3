@@ -1,25 +1,25 @@
 package com.example.semsar3.securite;
 
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MyUserDetails extends User implements UserDetails {
+@AllArgsConstructor
+public class MyUserDetails  implements UserDetails {
 
-    private User user;
+    private Client client;
 
-    public MyUserDetails(User user) {
-        this.user = user;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        user.getRolles().forEach(rolle -> {
+        client.getRolles().forEach(rolle -> {
             SimpleGrantedAuthority authority= new SimpleGrantedAuthority(rolle.getNom());
             authorities.add(authority);
         });
@@ -29,12 +29,12 @@ public class MyUserDetails extends User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return client.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return client.getUsername();
     }
 
     @Override
@@ -57,8 +57,4 @@ public class MyUserDetails extends User implements UserDetails {
         return false;
     }
 
-    @Override
-    public String getPhone() {
-        return user.getPhone();
-    }
 }

@@ -1,7 +1,7 @@
 package com.example.semsar3.entities;
 
 
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +35,6 @@ public class Logement {
     private String ville;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
-    private User user;
+    private Client user;
 
 }

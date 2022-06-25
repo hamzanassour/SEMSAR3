@@ -53,3 +53,14 @@ jobs:
 
       - name: Push image to registery
         run: docker push $REGISTRY_REPO:latest
+
+      - name: Deploy Docker Image to Heroku
+
+        uses: techmmunity/docker-heroku-deploy@v1.0.0
+        with:
+          # Email Linked to your Heroku Account
+          email: ${{secrets.HEROKU_EMAIL}}
+          # Your Heroku API Key
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          # Your Heroku App Name
+          app_name: ${{secrets.HEROKU_APP}}

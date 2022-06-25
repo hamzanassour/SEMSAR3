@@ -3,8 +3,7 @@ package com.example.semsar3;
 import com.example.semsar3.Controllers.LogementController;
 import com.example.semsar3.Controllers.UserController;
 import com.example.semsar3.repositories.LogementRepository;
-import com.example.semsar3.securite.entities.Rolle;
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,15 +32,16 @@ public class Semsar3Application  implements CommandLineRunner{
         SpringApplication.run(Semsar3Application.class, args);
 
     }
-
     @Bean
-    PasswordEncoder passwordEncoder(){
-        return  new BCryptPasswordEncoder();
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
+
     @Override
     public void run(String... args) throws Exception {
 
-
+      serviceApp.addAppUser(new Client(null , "hamza" , "nassour" , "hsdjhadhjj" , "67918317689" , "hamza" ,"hamza" ,null , null , null , null   ));
 
     }
 

@@ -1,7 +1,7 @@
 package com.example.semsar3.services;
 
 
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
 import com.example.semsar3.securite.entities.Rolle;
 import com.example.semsar3.securite.repositories.RolleRepository;
 import com.example.semsar3.securite.repositories.UserRepository;
@@ -26,7 +26,7 @@ public class ServiceAppImpl implements ServiceApp {
     }
 
     @Override
-    public User addAppUser(User appUser) {
+    public Client addAppUser(Client appUser) {
         String password=appUser.getPassword();
         appUser.setPassword(passwordEncoder.encode(password));
         return   appUserRepository.save(appUser);
@@ -43,7 +43,7 @@ public class ServiceAppImpl implements ServiceApp {
 
     @Override
     public void addRolleToUser(String username, String rolleName) {
-       User user= appUserRepository.findUserByUsername(username);
+       Client user= appUserRepository.findClientByUsername(username);
         if(user==null) throw  new RuntimeException("User n'existe pas ");
        Rolle rolle = rolleRepository.findByNom(rolleName);
        if(rolle==null) throw  new RuntimeException("Rolle n'existe pas");
@@ -55,7 +55,7 @@ public class ServiceAppImpl implements ServiceApp {
 
     }
     public void DeleteRolleFromUser(String username, String rolleName) {
-        User user= appUserRepository.findUserByUsername(username);
+        Client user= appUserRepository.findClientByUsername(username);
         if(user==null) throw  new RuntimeException("User deja existe");
         Rolle rolle = rolleRepository.findByNom(rolleName);
         if(rolle==null) throw  new RuntimeException("Rolle n'existe pas");
@@ -65,13 +65,13 @@ public class ServiceAppImpl implements ServiceApp {
     }
 
     @Override
-    public User LoadAppUsertByUsername(String username) {
+    public Client LoadAppUsertByUsername(String username) {
 
-        return appUserRepository.findUserByUsername(username);
+        return appUserRepository.findClientByUsername(username);
     }
 
     @Override
-    public List<User> listUsers() {
+    public List<Client> listUsers() {
 
         return appUserRepository.findAll() ;
     }

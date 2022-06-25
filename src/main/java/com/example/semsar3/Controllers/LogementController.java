@@ -63,7 +63,7 @@ public class LogementController {
 
     @RequestMapping("/addLogementForm")
     public String logementForm(@ModelAttribute("Logement") Logement logement){
-        return "addLogement";
+        return "ajouter-logement";
     }
 
     @RequestMapping("/ajouterLogement")
@@ -85,7 +85,7 @@ public class LogementController {
         }
         logement.setMedias(medias);
         logementRepository.save(savedLogement);
-        return "test2";
+        return "ajouter-logement";
     }
 
 

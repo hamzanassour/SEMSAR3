@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +28,7 @@
                     <a href="#"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
                             <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
-                        </div> Hamza Nassour
+                        </div><span sec:authentication="name"></span> <a th:href="@{/logout}">Deconnecter</a>
                     </a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 package com.example.semsar3.entities;
 
 
-import com.example.semsar3.securite.entities.User;
+import com.example.semsar3.securite.entities.Client;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,5 +22,5 @@ public class Demande {
     @ManyToOne
     Logement logement;
     @ManyToOne
-    private User user ;
+    private Client user ;
 }

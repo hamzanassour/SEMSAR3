@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,7 @@
         </div>
 
         <div class="log-in-container">
-            <form action="">
+            <form th:action="@{/login}">
                 <input type="text" name="email" class="log-in-input-field">
                 <input type="password" name="password" class="log-in-input-field">
                 <input type="submit" value="Se connecter" class="log-in-input-field log-in-input-submit">
