@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,14 +23,14 @@
                 </div>  
 
                 <div class="user-operations">
-                    <a href="#" class="add-annonce">
+                    <a th:href="@{addLogementForm}" class="add-annonce">
                         + Ajouter Annonce
                     </a>
 
                     <a href="#"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
                             <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
-                        </div> Hamza Nassour
+                        </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
             </div>
@@ -50,17 +51,23 @@
 
                 <div class="search-container">
                     <div class="search-form-container">
-                        <form action="#">
+                        <form  th:action="@{find}" th:method="get"  >
                             <div class="search-crt">
-                                <select name="city" id="city" class="input-fields" >
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
+                                <select  id="ville" name="ville"  class="input-fields"  >
+                                    <option   th:value="Marrakech"  >Marrakech </option>
+                                    <option   th:value="Casablanca"  >Casablanca </option>
+                                    <option   th:value="Fes"  >Fes </option>
+                                    <option   th:value="Agadir"  >Agadir </option>
+                                    <option   th:value="Berrechid"  >Berrechid </option>
+                                    <option   th:value="Settat"  >Settat </option>
+                                    <option   th:value="Tanger"  >Tanger </option>
+                                    <option   th:value="Tetouan"  >Tetouan </option>
                                 </select>
-                                <select name="type" id="type" class="input-fields">
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
+                                <select  id="type" name="type"  class="input-fields" >
+                                    <option   th:value="Villa"  >Villa </option>
+                                    <option   th:value="Studio"  >Studio </option>
+                                    <option   th:value="Appartement"  >Appartement </option>
+                                    <option   th:value="Chambre"  >Chambre </option>
                                 </select>
                                 <input type="submit" class="submit-btn" value="Rechercher">
                             </div>
@@ -70,91 +77,28 @@
 
                 <div class="results-header-container">
                     <div class="results-header">
-                        <h2>Plus de 30 resultats !</h2>
+                        <h2>Les resultats de votre recherche</h2>
                     </div>
-                </div>    
+                </div>
 
                 <div class="result-container">
-                    <div class="results-content">     
+                    <div class="results-content" th:each="log :${logements}" >
                         <div class="result-card">
                             <div class="result-card-img">
-                                <h1>Image</h1>
+                                <img class="image-cover" th:src="@{${ log.medias[0].path}}" />
                             </div>
                             <div class="result-card-description">
-                                <a href="#">
-                                    <div class="result-title">
-                                        <h3>Villa 400m2 Avec picine</h3>
-                                    </div>
+                                <a th:href="@{detail(id=${log.id})}">
+                                <div class="result-title">
+                                    <h3 th:text="${log.titre}"></h3>
+                                </div>
                                 </a>
-    
-                                <p class="result-description-text">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                                </p>
+                                <p class="result-description-text" th:text="${log.description}"  > </p>
                                 <div class="result-details">
-                                    <div class="city">
-                                        <i class="fa-solid fa-location-arrow"></i>
-                                        City: Marrakech
+                                    <div class="city"  th:text="${log.ville}">
                                     </div>
-                                    <div class="type-result">Type: Villa</div>
-                                </div>                           
-                            </div>
-                            <div class="date-of-pub">
-                                Postee: le 1 janvier 2018
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="results-content">     
-                        <div class="result-card">
-                            <div class="result-card-img">
-                                <h1>Image</h1>
-                            </div>
-                            <div class="result-card-description">
-                                <a href="#">
-                                    <div class="result-title">
-                                        <h3>Villa 400m2 Avec picine</h3>
-                                    </div>
-                                </a>
-    
-                                <p class="result-description-text">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                                </p>
-                                <div class="result-details">
-                                    <div class="city">
-                                        <i class="fa-solid fa-location-arrow"></i>
-                                        City: Marrakech
-                                    </div>
-                                    <div class="type-result">Type: Villa</div>
-                                </div>                           
-                            </div>
-                            <div class="date-of-pub">
-                                Postee: le 1 janvier 2018
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="results-content">     
-                        <div class="result-card">
-                            <div class="result-card-img">
-                                <h1>Image</h1>
-                            </div>
-                            <div class="result-card-description">
-                                <a href="#">
-                                    <div class="result-title">
-                                        <h3>Villa 400m2 Avec picine</h3>
-                                    </div>
-                                </a>
-    
-                                <p class="result-description-text">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus placeat autem aliquid quam minima numquam dolore. Non, dolores! Cumque aliquam fugit ad nulla vitae.
-                                </p>
-                                <div class="result-details">
-                                    <div class="city">
-                                        <i class="fa-solid fa-location-arrow"></i>
-                                        City: Marrakech
-                                    </div>
-                                    <div class="type-result">Type: Villa</div>
-                                </div>                           
+                                    <div class="type-result" th:text="${log.type}" ></div>
+                                </div>
                             </div>
                             <div class="date-of-pub">
                                 Postee: le 1 janvier 2018
@@ -162,7 +106,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="results-pagination" >
+                    <div class="results-pagination-container" >
+                        <a th:href="@{find(page=${status.index} , ville=${ville} , type=${type})}" th:each="page,status : ${pages}">
+                            <div  class="page-anchor"   >
+                                <span  class="page-anchor-text" th:text="${status.index}" th:style="${status.index==pageCourant? 'color :#5cdb95 ':'' }"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
         
     </div>

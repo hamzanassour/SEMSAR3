@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,14 +22,14 @@
                 </div>  
 
                 <div class="user-operations">
-                    <a href="#" class="add-annonce">
+                    <a th:href="@{addLogementForm}" class="add-annonce">
                         + Ajouter Annonce
                     </a>
 
                     <a href="#"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
                             <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
-                        </div> Hamza Nassour
+                        </div> <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
             </div>
@@ -41,29 +42,29 @@
                         <div class="profile-data">
                             <div class="profile-img-container">
                                 <div class="profile-image">
-                                    <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                                    <img class="image-cover-circle" th:src="@{${client.img}}" />
                                 </div>
                             </div>
-                
+
                             <div class="profile-info">
-                                <span>Hamza Nassour</span>
+                                <span th:text="${client.nom}"></span> &nbsp; <span th:text="${client.prenom}"></span>
                             </div>
-    
+
                             <div class="profile-info">
-                                <span>+212 65103232<span>
+                                <span th:text="${client.phone}"></span>
                             </div>
-    
+
                             <div class="profile-info">
-                                <span>nassour@ensa-m.com<span>
+                                <span th:text="${client.email}"></span>
                             </div>
                         </div>
-    
+
                         <div class="navigation-links-container">
                             <div class="navigation-links">
-                                <a href="#" class="navigation-link">
+                                <a th:href="@{mes-annonces}" class="navigation-link">
                                     <span class="title">Mes Annonces ></span>
                                 </a>
-        
+
                                 <a href="#" class="navigation-link">
                                     <span class="title">Mes Demandes ></span>
                                 </a>
@@ -71,8 +72,7 @@
                                 <a href="#" class="navigation-link">
                                     <span class="title">Editer profile</span>
                                 </a>
-
-                                <a href="#" class="navigation-link">
+                                <a th:href="@{/logout}" class="navigation-link">
                                     <span class="title">Déconnexion</span>
                                 </a>
                             </div>

@@ -4,6 +4,8 @@ import com.example.semsar3.entities.Logement;
 import com.example.semsar3.entities.Media;
 import com.example.semsar3.repositories.LogementRepository;
 
+import com.example.semsar3.securite.entities.Client;
+import com.example.semsar3.securite.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +30,8 @@ public class LogementController {
 
     @Autowired
     LogementRepository logementRepository ;
+    @Autowired
+    UserRepository userRepository;
 
     public  static  String uploadDirLogementImages = System.getProperty("user.dir")+"\\target\\classes\\static\\LogementImages";
 
@@ -57,23 +61,26 @@ public class LogementController {
     Logement logement= logementRepository.findLogementsById(id);
     model.addAttribute("logement" , logement);
 
-        return "result-details";
+        return "details-resultat";
     }
 
 
 
     @RequestMapping("/addLogementForm")
-    public String logementForm(@ModelAttribute("Logement") Logement logement){
+    public String logementForm( Logement logement , Authentication authentication , Model model){
+        model.addAttribute("logement");
+        Client client= userRepository.findClientByUsername(authentication.getName());
+        model.addAttribute("client" , client);
         return "ajouter-logement";
     }
-
     @RequestMapping("/ajouterLogement")
-    public String save(@ModelAttribute("logement") Logement logement , @RequestParam("images") MultipartFile[] images,
-                       @RequestParam("imageP") MultipartFile imageP , Authentication authentication ) throws IOException {
+    public String save(Logement logement , @RequestParam("images") MultipartFile[] images,
+                       @RequestParam("imageP") MultipartFile imageP , Authentication authentication , Model model) throws IOException {
 
-
-        System.out.println(authentication.getName());
+         Client client=  userRepository.findClientByUsername( authentication.getName());
+model.addAttribute("client" ,client );
         Logement savedLogement = logementRepository.save(logement);
+        savedLogement.setUser(client);
         List<Media> medias = new ArrayList<>();
         String name =savedLogement.getId()+"p"+StringUtils.cleanPath(imageP.getOriginalFilename());
         Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
@@ -91,8 +98,6 @@ public class LogementController {
         logementRepository.save(savedLogement);
         return "ajouter-logement";
     }
-
-
     @RequestMapping("/deleteLogement")
     public  String delete(@RequestParam Long id ){
         logementRepository.deleteById(id);
@@ -104,6 +109,19 @@ public class LogementController {
         model.addAttribute("logement" ,logementRepository.findById(id) );
         // apres la suppression il faut redirect l'utilisateur ves le meme page pour voir le changement
         return "updateLogementForm";
+    }
+
+
+
+
+    @RequestMapping("/mes-annonces")
+    public  String chercherMesAnnonces(Authentication authentication , Model model){
+        Client client = userRepository.findClientByUsername(authentication.getName());
+        List<Logement > logements = new ArrayList<>();
+        logements = client.getLogements();
+        model.addAttribute("logements" , logements);
+        model.addAttribute("client" , client);
+        return "mes-annonces";
     }
 
 

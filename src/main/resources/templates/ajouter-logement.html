@@ -21,7 +21,7 @@
                 </div>  
 
                 <div class="user-operations">
-                    <a href="#" class="add-annonce">
+                    <a th:href="@{addLogementForm}" class="add-annonce">
                         + Ajouter Annonce
                     </a>
 
@@ -41,26 +41,26 @@
                         <div class="profile-data">
                             <div class="profile-img-container">
                                 <div class="profile-image">
-                                    <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                                    <img class="image-cover-circle" th:src="@{${client.img}}" />
                                 </div>
                             </div>
                 
                             <div class="profile-info">
-                                <span>Hamza Nassour</span>
+                                <span th:text="${client.nom}"></span> &nbsp; <span th:text="${client.prenom}"></span>
                             </div>
     
                             <div class="profile-info">
-                                <span>+212 65103232<span>
+                                <span th:text="${client.phone}"></span>
                             </div>
     
                             <div class="profile-info">
-                                <span>nassour@ensa-m.com<span>
+                                <span th:text="${client.email}"></span>
                             </div>
                         </div>
     
                         <div class="navigation-links-container">
                             <div class="navigation-links">
-                                <a href="#" class="navigation-link">
+                                <a th:href="@{mes-annonces}" class="navigation-link">
                                     <span class="title">Mes Annonces ></span>
                                 </a>
         
@@ -93,13 +93,13 @@
                             <form th:action="@{ajouterLogement}" method="post" enctype="multipart/form-data">
                                 <div class="annonce-fields-container">
 
-                                    <select  placeholder="Type" name="firstname" class="sign-up-input-field">
+                                    <select  placeholder="Type" name="type" class="sign-up-input-field">
                                         <option   th:value="Villa"  >Villa </option>
                                         <option   th:value="Studio"  >Studio </option>
                                         <option   th:value="Appartement"  >Appartement </option>
                                         <option   th:value="Chambre"  >Chambre </option>
                                     </select>
-                                    <select  placeholder="Type" name="firstname" class="sign-up-input-field">
+                                    <select  placeholder="Type" name="ville" class="sign-up-input-field">
                                         <option   th:value="Marrakech"  >Marrakech </option>
                                         <option   th:value="Casablanca"  >Casablanca </option>
                                         <option   th:value="Fes"  >Fes </option>
@@ -109,7 +109,7 @@
                                         <option   th:value="Tanger"  >Tanger </option>
                                         <option   th:value="Tetouan"  >Tetouan </option>
                                     </select>
-                                    <select placeholder="Type" name="firstname" class="sign-up-input-field">
+                                    <select placeholder="Type" name="status" class="sign-up-input-field">
                                         <option   th:value="Disponible"  >Disponible </option>
                                         <option   th:value="Occupe"  >Occupe </option>
                                     </select>
@@ -118,18 +118,17 @@
                                 <input type="text" name="titre" placeholder="Titre Ex: Studio meuble a sidi abbad" class="sign-up-input-field">
                                 <input type="text" name="superficie" placeholder="Superficie Ex: 40m2" class="sign-up-input-field">
                                 <input type="text" name="prix" placeholder="Prix Ex: 2000 MAD" class="sign-up-input-field">
-                                <input type="text" name="coloc" placeholder="Nomber de colocs Ex: 20 personnes" class="sign-up-input-field">
-                                <input type="text" name="adresse" placeholder="Adresse Ex: 270 PB, Sidi abbad 1 Marrakech" class="sign-up-input-field">
-                                <textarea name="" class="logement-description" id="" cols="30" rows="10"></textarea>
+                                <input type="text" name="nbr_de_coloc" placeholder="Nomber de colocs Ex: 20 personnes" class="sign-up-input-field">
+                                <input type="text" name="adress" placeholder="Adresse Ex: 270 PB, Sidi abbad 1 Marrakech" class="sign-up-input-field">
+                                <textarea name="description" class="logement-description" id="" cols="30" rows="10"></textarea>
                                 <div class="annonce-fields-container">
-
                                     <label for="inputFile1" class="inputFileLabel">
-                                        Image Princ
+                                        Image Principale
                                         <input name="imageP" id="inputFile1" class="inputFile" type="file"/>
                                     </label>
 
                                     <label for="inputFile" class="inputFileLabel">
-                                        Image secon
+                                        Image secondaire
                                         <input  id="inputFile" name="images" class="inputFile" type="file" multiple />
                                     </label>
                                     <input type="submit" value="Ajouter"  class="sign-up-submit sign-up-input-field">

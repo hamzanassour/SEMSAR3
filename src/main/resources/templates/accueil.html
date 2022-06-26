@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="/css/search-container/search-container.css">
     <link rel="stylesheet" href="/css/slogan-container/slogan-container.css">
     <link rel="stylesheet" href="/css/result-container/result-container.css">
+    <link rel="stylesheet" href="/css/result-container/results-pagination.css">
     <title>Home</title>
 </head>
 <body>
@@ -22,14 +24,14 @@
                 </div>  
 
                 <div class="user-operations">
-                    <a href="#" class="add-annonce">
+                    <a th:href="@{addLogementForm}" class="add-annonce">
                         + Ajouter Annonce
                     </a>
 
                     <a href="#"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
                             <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
-                        </div> Hamza Nassour
+                        </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
             </div>
@@ -50,17 +52,23 @@
 
                 <div class="search-container">
                     <div class="search-form-container">
-                        <form action="#">
+                        <form  th:action="@{find}" th:method="get" >
                             <div class="search-crt">
-                                <select name="city" id="city" class="input-fields" >
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
+                                <select  id="ville" name="ville"  class="input-fields" >
+                                    <option   th:value="Marrakech"  >Marrakech </option>
+                                    <option   th:value="Casablanca"  >Casablanca </option>
+                                    <option   th:value="Fes"  >Fes </option>
+                                    <option   th:value="Agadir"  >Agadir </option>
+                                    <option   th:value="Berrechid"  >Berrechid </option>
+                                    <option   th:value="Settat"  >Settat </option>
+                                    <option   th:value="Tanger"  >Tanger </option>
+                                    <option   th:value="Tetouan"  >Tetouan </option>
                                 </select>
-                                <select name="type" id="type" class="input-fields">
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
-                                    <option value="ait ishaq">ait ishaq</option>
+                                <select  id="type" name="type"  class="input-fields" >
+                                    <option   th:value="Villa"  >Villa </option>
+                                    <option   th:value="Studio"  >Studio </option>
+                                    <option   th:value="Appartement"  >Appartement </option>
+                                    <option   th:value="Chambre"  >Chambre </option>
                                 </select>
                                 <input type="submit" class="submit-btn" value="Rechercher">
                             </div>
