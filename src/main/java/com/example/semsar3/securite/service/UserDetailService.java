@@ -1,6 +1,5 @@
 package com.example.semsar3.securite.service;
 
-import com.example.semsar3.securite.MyUserDetails;
 import com.example.semsar3.securite.entities.Client;
 import com.example.semsar3.services.ServiceAppImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Client client= serviceApp.LoadAppUsertByUsername(username);
+       Client client= serviceApp.loadAppUserByUsername(username);
 
 
 
