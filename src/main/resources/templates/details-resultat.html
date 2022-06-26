@@ -49,36 +49,26 @@
                 <div class="details-main-container">
                     <div class="result-details-container">
                         <div class="card-img-container">
-                            <div class="details-img">
-                                <img class="image-cover" src="./img/location.jpg" alt="">
-                            </div>
-                            <div class="details-img">
-                                <img class="image-cover" src="./img/location.jpg" alt="">
-                            </div>
-                            <div class="details-img">
-                                <img class="image-cover" src="./img/location.jpg" alt="">
+                            <div class="details-img" th:each="media :${logements.getMedias()}">
+                                <img class="image-cover" th:src="@{${ media.path}}" alt="">
                             </div>
                         </div>
                         <div class="details-content-container">
                             <div class="details-content">
                                 <div class="details-title">
-                                    <span class="primary-title">Titre:</span> Daar nadya
-                                    <span class="primary-title">Prix:</span> 10000 MAD
+                                    <span class="primary-title">Titre:</span><span th:text="${logements.getTitre()}"></span>
+                                    <span class="primary-title">Prix:</span> <span th:text="${logements.getPrix()}"></span>
                                 </div>
         
                                 <div class="details-title">
                                     <span class="primary-title">
-                                        Type:
-                                    </span> <span>Villa</span>
+                                        Type:<span th:text="${logements.getType()}"></span>
+                                    </span> <span th:text="${logements.getVille()}"></span>
                                 </div>
             
                                 <div class="details-description">
                                     <span class="primary-title">Description</span>
-                                    <span class="description-text-content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Corporis, quam deleniti cupiditate unde magnam impedit a ab obcaecati perferendis modi consequatur, deserunt distinctio, saepe atque.
-                                        Rem laudantium rerum ipsa veritatis?
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam cum repudiandae qui impedit nihil nam iusto repellendus. Ratione perspiciatis earum eum similique, fugit dolor laudantium, eaque, neque voluptatum libero quibusdam!
+                                    <span class="description-text-content" th:text="${logements.getDescription()}">
                                     </span>
                                 </div>
         

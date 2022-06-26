@@ -59,7 +59,7 @@ public class LogementController {
     public String detail(@RequestParam Long id  , Model model ){
 
     Logement logement= logementRepository.findLogementsById(id);
-    model.addAttribute("logement" , logement);
+    model.addAttribute("logements" , logement);
         return "details-resultat";
     }
 
