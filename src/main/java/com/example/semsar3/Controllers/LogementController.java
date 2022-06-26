@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,9 +24,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@Transactional
 public class LogementController {
 
     @Autowired
@@ -73,11 +76,11 @@ public class LogementController {
         return "ajouter-logement";
     }
     @RequestMapping("/ajouterLogement")
-    public String save(Logement logement , @RequestParam("images") MultipartFile[] images,
+    public String save( Logement logement , @RequestParam("images") MultipartFile[] images,
                        @RequestParam("imageP") MultipartFile imageP , Authentication authentication , Model model) throws IOException {
 
          Client client=  userRepository.findClientByUsername( authentication.getName());
-model.addAttribute("client" ,client );
+         model.addAttribute("client" ,client );
         Logement savedLogement = logementRepository.save(logement);
         savedLogement.setUser(client);
         List<Media> medias = new ArrayList<>();
@@ -85,7 +88,8 @@ model.addAttribute("client" ,client );
         Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
         Files.write(filenameAndPath , imageP.getBytes());
         name="LogementImages/"+name;
-        medias.add(new Media(null , name));
+        medias.add(new Media(null, name));
+
         for (MultipartFile image : images){
             String name1 =savedLogement.getId()+ StringUtils.cleanPath(image.getOriginalFilename());
             Path filenameAndPath1 = Paths.get(uploadDirLogementImages,name1);
@@ -93,24 +97,53 @@ model.addAttribute("client" ,client );
             name1="LogementImages/"+name1;
             medias.add(new Media(null , name1));
         }
-        logement.setMedias(medias);
-        logementRepository.save(savedLogement);
+
+        savedLogement.setMedias(medias);
         return "ajouter-logement";
     }
+    @RequestMapping("/updateLogement")
+    public String update( Model model , Logement logement , @RequestParam("images") MultipartFile[] images,
+                        @RequestParam("imageP") MultipartFile imageP , Authentication authentication ) throws IOException {
+
+
+        List<Media> list = logementRepository.findLogementsById(logement.getId()).getMedias();
+        Client client=  userRepository.findClientByUsername( authentication.getName());
+        model.addAttribute("client" ,client );
+        Logement savedLogement = logementRepository.save(logement);
+        savedLogement.setUser(client);
+        List<Media> medias = new ArrayList<>();
+        String name =savedLogement.getId()+"p"+StringUtils.cleanPath(imageP.getOriginalFilename());
+        Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
+        Files.write(filenameAndPath , imageP.getBytes());
+        name="LogementImages/"+name;
+        medias.add(new Media(null, name));
+        for (MultipartFile image : images){
+            String name1 =savedLogement.getId()+ StringUtils.cleanPath(image.getOriginalFilename());
+            Path filenameAndPath1 = Paths.get(uploadDirLogementImages,name1);
+            Files.write(filenameAndPath1 , image.getBytes());
+            name1="LogementImages/"+name1;
+            medias.add(new Media(null , name1));
+        }
+        savedLogement.setMedias(medias);
+        return "ajouter-logement";
+    }
+
+
     @RequestMapping("/deleteLogement")
     public  String delete(@RequestParam Long id ){
         logementRepository.deleteById(id);
         // apres la suppression il faut redirect l'utilisateur ves le meme page pour voir le changement
-        return "redirect:/find";
+        return "redirect:/mes-annonces";
     }
     @RequestMapping("/updateLogementForm")
-    public  String update(Model model , Long id ){
-        model.addAttribute("logement" ,logementRepository.findById(id) );
+    public  String update(Model model , Long id  ,Authentication authentication  ){
+        Client client = userRepository.findClientByUsername(authentication.getName());
+        model.addAttribute("client" , client);
+        Logement logement = logementRepository.findLogementsById(id);
+        model.addAttribute("logement" , logement);
         // apres la suppression il faut redirect l'utilisateur ves le meme page pour voir le changement
-        return "updateLogementForm";
+        return "update-logement";
     }
-
-
 
 
     @RequestMapping("/mes-annonces")

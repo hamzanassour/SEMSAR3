@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http:///www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/top-nav-bar/top-nav-bar.css">
+    <link rel="stylesheet" href="/css/result-container/result-container.css">
+    <link rel="stylesheet" href="/css/content-container/content-container.css">
+    <link rel="stylesheet" href="/css/profile-container/profile-container.css">
+    <title>Home</title>
+</head>
+<body>
+<div class="main-container">
+    <div class="top-nav-bar-container">
+        <div class="top-nav-bar">
+            <div class="logo-container">
+                <h1 class="logo-content"><a th:href="@{/index}">Semssar.ma</a></h1>
+            </div>
+
+            <div class="user-operations">
+                <a th:href="@{addLogementForm}" class="add-annonce">
+                    + Ajouter Annonce
+                </a>
+
+                <a th:href="@{mes-annonces}"  class="consult-profile">
+                    <div class="nav-bar-profile-image-container">
+                        <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                    </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="profile-container">
+            <div class="profile-side-bar-container">
+                <div class="profile-side-bar">
+                    <div class="profile-data">
+                        <div class="profile-img-container">
+                            <div class="profile-image">
+                                <img class="image-cover-circle" th:src="@{${client.img}}" />
+                            </div>
+                        </div>
+
+                        <div class="profile-info">
+                            <span th:text="${client.nom}"></span> &nbsp; <span th:text="${client.prenom}"></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span th:text="${client.phone}"></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span th:text="${client.email}"></span>
+                        </div>
+                    </div>
+
+                    <div class="navigation-links-container">
+                        <div class="navigation-links">
+                            <a th:href="@{mes-annonces}" class="navigation-link">
+                                <span class="title">Mes Annonces ></span>
+                            </a>
+
+                            <a href="#" class="navigation-link">
+                                <span class="title">Mes Demandes ></span>
+                            </a>
+
+                            <a href="#" class="navigation-link">
+                                <span class="title">Editer profile</span>
+                            </a>
+                            <a th:href="@{/logout}" class="navigation-link">
+                                <span class="title">Déconnexion</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-annonces-container">
+                <div class="results-header-container">
+                    <div class="results-header">
+                        <h2>Modifier une annonce</h2>
+                    </div>
+                </div>
+
+                <div class="sign-up-container">
+                    <div class="sign-up-form-container">
+                        <div class="sign-up-form-description">
+                            Veuillez remplir Tous les champs*
+                        </div>
+                        <form th:action="@{updateLogement}" method="post" enctype="multipart/form-data"  th:object="${logement}">
+                            <div class="annonce-fields-container">
+
+                                <select  placeholder="Type" th:field="${logement.type}" class="sign-up-input-field">
+                                    <option   th:value="Villa"  >Villa </option>
+                                    <option   th:value="Studio"  >Studio </option>
+                                    <option   th:value="Appartement"  >Appartement </option>
+                                    <option   th:value="Chambre"  >Chambre </option>
+                                </select>
+                                <select  placeholder="Type" th:field="${logement.ville}" class="sign-up-input-field">
+                                    <option   th:value="Marrakech"  >Marrakech </option>
+                                    <option   th:value="Casablanca"  >Casablanca </option>
+                                    <option   th:value="Fes"  >Fes </option>
+                                    <option   th:value="Agadir"  >Agadir </option>
+                                    <option   th:value="Berrechid"  >Berrechid </option>
+                                    <option   th:value="Settat"  >Settat </option>
+                                    <option   th:value="Tanger"  >Tanger </option>
+                                    <option   th:value="Tetouan"  >Tetouan </option>
+                                </select>
+                                <select placeholder="Type" th:field="${logement.status}" class="sign-up-input-field">
+                                    <option   th:value="Disponible"  >Disponible </option>
+                                    <option   th:value="Occupe"  >Occupe </option>
+                                </select>
+                            </div>
+                            <input type="text"  th:field="${logement.id}" hidden>
+                            <input type="text"  th:field="${logement.titre}" placeholder="Titre Ex: Studio meuble a sidi abbad" class="sign-up-input-field">
+                            <input type="text" th:field="${logement.superficie}" placeholder="Superficie Ex: 40m2" class="sign-up-input-field">
+                            <input type="text" th:field="${logement.prix}" placeholder="Prix Ex: 2000 MAD" class="sign-up-input-field">
+                            <input type="text" th:field="${logement.nbr_de_coloc}" placeholder="Nomber de colocs Ex: 20 personnes" class="sign-up-input-field">
+                            <input type="text" th:field="${logement.adress}" placeholder="Adresse Ex: 270 PB, Sidi abbad 1 Marrakech" class="sign-up-input-field">
+                            <textarea th:field="${logement.description}" class="logement-description" id="" cols="30" rows="10"></textarea>
+                            <div class="annonce-fields-container">
+                                <label for="inputFile1" class="inputFileLabel">
+                                    Image Principale
+                                    <input name="imageP" id="inputFile1" class="inputFile" type="file"/>
+                                </label>
+                                <label for="inputFile" class="inputFileLabel">
+                                    Images secondaire
+                                    <input  id="inputFile" name="images" class="inputFile" type="file" multiple />
+                                </label>
+                                <input type="submit" value="Modifier"  class="sign-up-submit sign-up-input-field">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

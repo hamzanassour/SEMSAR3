@@ -27,7 +27,7 @@
 
                     <a th:href="@{mes-annonces}"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
-                            <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                            <img class="image-cover-circle" src="./img/avatar.png" alt="">
                         </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
@@ -96,8 +96,8 @@
                             </div>
     
                             <div class="annonce-operations">
-                                <a href="#" class="annonce-op supprimer-annonce">Supprimer</a>
-                                <a href="#" class="annonce-op modifier-annonce">Modifier</a>
+                                <a th:href="@{deleteLogement(id=${log.id})}" class="annonce-op supprimer-annonce">Supprimer</a>
+                                <a th:href="@{updateLogementForm(id=${log.id})}" class="annonce-op modifier-annonce">Modifier</a>
                             </div>
                         </div>
                     </div>
