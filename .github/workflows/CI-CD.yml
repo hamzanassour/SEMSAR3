@@ -27,7 +27,7 @@ jobs:
           name: build # Will be used down for docker image building
           path: |
             target/**
-  docker_build:
+  docker_build_and_deploy:
 
     runs-on: ubuntu-latest
     needs: build

@@ -12,7 +12,7 @@ public interface ServiceApp {
     Client addAppUser(Client appUser);
     Rolle addRolle(Rolle rolle);
     void addRolleToUser(String username , String rolleName );
-    Client LoadAppUsertByUsername(String username);
+    Client loadAppUserByUsername(String username);
     List<Client> listUsers();
 
 }
