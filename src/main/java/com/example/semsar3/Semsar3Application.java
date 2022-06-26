@@ -41,7 +41,7 @@ public class Semsar3Application  implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-      serviceApp.addAppUser(new Client(null , "hamza" , "nassour" , "hsdjhadhjj" , "67918317689" , "hamza" ,"hamza" ,null , null , null , null   ));
+
 
     }
 

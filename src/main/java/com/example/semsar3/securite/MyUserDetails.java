@@ -14,7 +14,15 @@ import java.util.Collection;
 public class MyUserDetails  implements UserDetails {
 
     private Client client;
+    private String email;
 
+    public String getEmail() {
+        return client.getUsername();
+    }
+
+    public void setEmail(String email) {
+        this.email =client.getEmail();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -57,4 +65,7 @@ public class MyUserDetails  implements UserDetails {
         return false;
     }
 
+    public Client getClient() {
+        return client;
+    }
 }

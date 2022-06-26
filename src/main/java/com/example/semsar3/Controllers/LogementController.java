@@ -7,6 +7,7 @@ import com.example.semsar3.repositories.LogementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -68,7 +69,10 @@ public class LogementController {
 
     @RequestMapping("/ajouterLogement")
     public String save(@ModelAttribute("logement") Logement logement , @RequestParam("images") MultipartFile[] images,
-                       @RequestParam("imageP") MultipartFile imageP) throws IOException {
+                       @RequestParam("imageP") MultipartFile imageP , Authentication authentication ) throws IOException {
+
+
+        System.out.println(authentication.getName());
         Logement savedLogement = logementRepository.save(logement);
         List<Media> medias = new ArrayList<>();
         String name =savedLogement.getId()+"p"+StringUtils.cleanPath(imageP.getOriginalFilename());

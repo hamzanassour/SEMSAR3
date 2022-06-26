@@ -15,9 +15,5 @@ public class HomeController {
     public  String index() {
         return "acceuil";
     }
-    @RequestMapping("/")
-    public  String home() {
-        return "espaceUser";
-    }
 
 }
