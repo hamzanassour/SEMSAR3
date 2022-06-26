@@ -90,10 +90,13 @@
     text-decoration: none;
 }
 
+.navigation-link:hover{
+    background-color: rgb(210, 164, 0);
+}
+
 .title {
     text-align: center;
     width: 90%;
-    background-color: black;
 }
 
 .my-annonces-container{
