@@ -13,7 +13,7 @@
     <div class="main-container">
         <div class="se_connecter-header">
             <div class="logo-container">
-                <h1 class="logo-content">Semssar.ma</h1>
+                <h1 class="logo-content"><a th:href="@{/index}">Semssar.ma</a></h1>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="log-in-container">
-            <form th:action="@{/login}">
+            <form th:action="@{/login}" th:method="post">
                 <input type="text" name="username" class="log-in-input-field">
                 <input type="password" name="password" class="log-in-input-field">
                 <input type="submit" value="Se connecter" class="log-in-input-field log-in-input-submit">

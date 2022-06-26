@@ -60,7 +60,6 @@ public class LogementController {
 
     Logement logement= logementRepository.findLogementsById(id);
     model.addAttribute("logement" , logement);
-
         return "details-resultat";
     }
 

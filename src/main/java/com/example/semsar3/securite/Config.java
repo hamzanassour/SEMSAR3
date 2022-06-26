@@ -36,10 +36,16 @@ public class Config  extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .antMatchers("/font-awesome/**").permitAll()
+                .antMatchers("/css/**").permitAll()
                         .anyRequest().authenticated()
                         .and()
-        .formLogin().defaultSuccessUrl("/index")
-                .permitAll()
+        .formLogin().
+                loginPage("/login")
+                        .passwordParameter("password")
+                                .usernameParameter("username")
+                .defaultSuccessUrl("/index")
+                .permitAll() // all users have the wright to access login page
                 .and()
                 .logout()
                 .permitAll();

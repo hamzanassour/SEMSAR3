@@ -19,7 +19,7 @@
         <div class="top-nav-bar-container">
             <div class="top-nav-bar">
                 <div class="logo-container">
-                    <h1 class="logo-content">Semssar.ma</h1>
+                    <h1 class="logo-content"><a th:href="@{/index}">Semssar.ma</a></h1>
                 </div>  
 
                 <div class="user-operations">
@@ -27,9 +27,9 @@
                         + Ajouter Annonce
                     </a>
 
-                    <a href="#"  class="consult-profile">
+                    <a th:href="@{mes-annonces}"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
-                            <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
+                            <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
                         </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
