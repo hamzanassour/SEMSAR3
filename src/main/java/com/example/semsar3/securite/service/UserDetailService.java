@@ -25,7 +25,6 @@ public class UserDetailService implements UserDetailsService {
 
 
 
-
        return new User(
                client.getUsername(),
                client.getPassword(),

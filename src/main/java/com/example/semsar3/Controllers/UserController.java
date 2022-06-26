@@ -42,7 +42,7 @@ public class UserController {
         serviceApp.addAppUser(user);
         return "test";
     }
-    @RequestMapping("/loginForm")
+    @RequestMapping("/login")
     public String login()
     {
         return "se_connecter";
