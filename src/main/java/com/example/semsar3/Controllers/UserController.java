@@ -33,14 +33,14 @@ public class UserController {
     }
 
     @RequestMapping("/ajouterUser")
-    public String save(@ModelAttribute("user") Client user , @RequestParam("pdp") MultipartFile multipartFile) throws IOException {
+    public String save(Client user , @RequestParam("pdp") MultipartFile multipartFile) throws IOException {
         String name =StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Path filenameAndPath = Paths.get(uploadDirUserProfiles,name);
         Files.write(filenameAndPath , multipartFile.getBytes());
         name="userProfiles/"+name;
         user.setImg(name);
         serviceApp.addAppUser(user);
-        return "test";
+        return "redirect:/login";
     }
     @RequestMapping("/login")
     public String login()

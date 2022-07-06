@@ -37,7 +37,7 @@ public class Client {
     //@NotEmpty
     private String password;
     private String img;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private List<Demande> demandes;
     @OneToMany(mappedBy = "user")
     private List<Logement> logements;

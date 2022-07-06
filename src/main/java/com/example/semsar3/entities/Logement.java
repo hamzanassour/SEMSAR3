@@ -28,7 +28,7 @@ public class Logement {
     private int nbr_de_coloc;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Media> medias;
-    @OneToMany(mappedBy = "logement" )
+    @OneToMany(mappedBy = "logement"  , cascade = CascadeType.ALL)
     private List<Demande> demandes;
     private String  type;
     private String status;

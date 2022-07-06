@@ -1,7 +1,9 @@
 package com.example.semsar3.Controllers;
 
+import com.example.semsar3.entities.Demande;
 import com.example.semsar3.entities.Logement;
 import com.example.semsar3.entities.Media;
+import com.example.semsar3.repositories.DemandeRepository;
 import com.example.semsar3.repositories.LogementRepository;
 
 import com.example.semsar3.securite.entities.Client;
@@ -19,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.jws.WebParam;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -35,6 +39,8 @@ public class LogementController {
     LogementRepository logementRepository ;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    DemandeRepository demandeRepository;
 
     public  static  String uploadDirLogementImages = System.getProperty("user.dir")+"\\target\\classes\\static\\LogementImages";
 
@@ -99,7 +105,7 @@ public class LogementController {
         }
 
         savedLogement.setMedias(medias);
-        return "ajouter-logement";
+        return "redirect:/mes-annonces";
     }
     @RequestMapping("/updateLogement")
     public String update( Model model , Logement logement , @RequestParam("images") MultipartFile[] images,
@@ -112,11 +118,17 @@ public class LogementController {
         Logement savedLogement = logementRepository.save(logement);
         savedLogement.setUser(client);
         List<Media> medias = new ArrayList<>();
-        String name =savedLogement.getId()+"p"+StringUtils.cleanPath(imageP.getOriginalFilename());
-        Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
-        Files.write(filenameAndPath , imageP.getBytes());
-        name="LogementImages/"+name;
-        medias.add(new Media(null, name));
+        if (imageP.isEmpty()){
+            medias.add(list.get(0));
+        }
+        else {
+            String name =savedLogement.getId()+"p"+StringUtils.cleanPath(imageP.getOriginalFilename());
+            Path filenameAndPath = Paths.get(uploadDirLogementImages, name);
+            Files.write(filenameAndPath , imageP.getBytes());
+            name="LogementImages/"+name;
+            medias.add(new Media(null, name));
+        }
+
         for (MultipartFile image : images){
             String name1 =savedLogement.getId()+ StringUtils.cleanPath(image.getOriginalFilename());
             Path filenameAndPath1 = Paths.get(uploadDirLogementImages,name1);
@@ -125,7 +137,7 @@ public class LogementController {
             medias.add(new Media(null , name1));
         }
         savedLogement.setMedias(medias);
-        return "ajouter-logement";
+        return "redirect:/mes-annonces";
     }
 
 
@@ -155,12 +167,39 @@ public class LogementController {
         model.addAttribute("client" , client);
         return "mes-annonces";
     }
-
-
-
-
-
-
-
-
+    @RequestMapping("/reserver")
+    public  String reserverLogement(Authentication authentication , Model model , Long id ){
+        Client client = userRepository.findClientByUsername(authentication.getName());
+        Logement logement = logementRepository.findLogementsById(id);
+        Demande demande = new Demande(null ,new Date() , 0.0 , logement , client);
+        client.getDemandes().add(demande);
+        logement.getDemandes().add(demande);
+        return "redirect:/index";
+    }
+    @RequestMapping("/demandes")
+    public  String demandes(Long id , Model model  , Authentication authentication){
+        Client client = userRepository.findClientByUsername(authentication.getName());
+        Logement logement= logementRepository.findLogementsById(id);
+        List<Demande> demandes =logement.getDemandes();
+        model.addAttribute("demandes" , demandes);
+        model.addAttribute("client" , client);
+        model.addAttribute("logement" , logement);
+        return "Annonce-demandes";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

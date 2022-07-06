@@ -38,6 +38,8 @@ public class Config  extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/font-awesome/**").permitAll()
                 .antMatchers("/css/**").permitAll()
+                .antMatchers("/signup").permitAll()
+                .antMatchers("/ajouterUser").permitAll()
                         .anyRequest().authenticated()
                         .and()
         .formLogin().

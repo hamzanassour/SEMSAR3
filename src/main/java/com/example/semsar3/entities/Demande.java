@@ -22,5 +22,5 @@ public class Demande {
     @ManyToOne
     Logement logement;
     @ManyToOne
-    private Client user ;
+    private Client user;
 }

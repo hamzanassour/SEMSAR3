@@ -84,20 +84,21 @@
                             <h2>Mes Annonces</h2>
                         </div>
                     </div>
-                    
-                    <div class="annonce-container" th:each="log :${logements}">
+
+                    <div class="annonce-container" th:each="log :${logements}" >
                         <div class="annonce">
                             <div class="annonce-image">
                                 <img  class="image-cover" th:src="@{ ${ log.getMedias()[0].path}}" />
                             </div>
-    
+
                             <div class="annonce-title" th:text="${log.getTitre()}">
 
                             </div>
-    
+
                             <div class="annonce-operations">
                                 <a th:href="@{deleteLogement(id=${log.id})}" class="annonce-op supprimer-annonce">Supprimer</a>
                                 <a th:href="@{updateLogementForm(id=${log.id})}" class="annonce-op modifier-annonce">Modifier</a>
+                                <a style="background-color: white ; color: black" th:href="@{demandes(id=${log.id})}" class="annonce-op modifier-annonce">Demandes</a>
                             </div>
                         </div>
                     </div>

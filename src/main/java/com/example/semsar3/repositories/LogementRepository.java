@@ -11,5 +11,6 @@ public interface LogementRepository extends JpaRepository<Logement, Long> {
 
    Page<Logement> findLogementsByVilleAndType(String villeName , String type , Pageable pageable );
    Logement findLogementsById(Long id);
+   List<Logement> findLogementById(Long id);
 
 }

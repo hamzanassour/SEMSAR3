@@ -30,7 +30,7 @@
 
                     <a th:href="@{mes-annonces}"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
-                            <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                            <img class="image-cover-circle" src="./img/avatar.png" alt="">
                         </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
@@ -72,7 +72,8 @@
                                     </span>
                                 </div>
         
-                                <form action="" >
+                                <form th:action="@{/reserver}" th:method="post">
+                                    <input type="text" th:name="id" th:value="${logements.id}" hidden >
                                     <input type="submit" value="Demander ce logement" class="">
                                 </form>
                             </div>

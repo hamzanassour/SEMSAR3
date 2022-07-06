@@ -28,7 +28,7 @@
 
                     <a th:href="@{mes-annonces}"  class="consult-profile">
                         <div class="nav-bar-profile-image-container">
-                            <img class="image-cover-circle" src="./img/hamza.jpg" alt="">
+                            <img class="image-cover-circle" src="./img/avatar.png" alt="">
                         </div><span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                     </a>
                 </div>
@@ -66,10 +66,6 @@
                                 </a>
 
                                 <a href="#" class="navigation-link">
-                                    <span class="title">Mes Demandes ></span>
-                                </a>
-
-                                <a href="#" class="navigation-link">
                                     <span class="title">Editer profile</span>
                                 </a>
                                 <a th:href="@{/logout}" class="navigation-link">
@@ -83,44 +79,36 @@
                     <div class="details-main-container">
                         <div class="result-details-container">
                             <div class="card-img-container">
-                                <div class="details-img">
-                                    <img class="image-cover" src="./img/location.jpg" alt="">
-                                </div>
-                                <div class="details-img">
-                                    <img class="image-cover" src="./img/location.jpg" alt="">
-                                </div>
-                                <div class="details-img">
-                                    <img class="image-cover" src="./img/location.jpg" alt="">
+                                <div class="details-img" th:each="media :${logement.getMedias()}">
+                                    <img class="image-cover" th:src="@{${ media.path}}" alt="">
                                 </div>
                             </div>
                             <div class="details-content-container">
                                 <div class="details-content">
                                     <div class="details-title">
-                                        <span class="primary-title">Titre:</span> Daar nadya
-                                        <span class="primary-title">Prix:</span> 10000 MAD
+                                        <span class="primary-title">Titre:</span><span th:text="${logement.getTitre()}"></span>
+                                        <span class="primary-title">Prix:</span> <span th:text="${logement.getPrix()}"></span>
                                     </div>
-            
+
                                     <div class="details-title">
-                                        <span class="primary-title">
-                                            Type:
-                                        </span> <span>Villa</span>
+                                    <span class="primary-title">
+                                        Type:<span th:text="${logement.getType()}"></span>
+                                    </span> <span th:text="${logement.getVille()}"></span>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="annonce-container">
-                        <div class="annonce">
+                    <div class="annonce-container" th:each="demande  :${demandes}">
+                        <div class="annonce" >
                             Demande 1:
                             <div class="annonce-image">
-                                <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
+                                <img class="image-cover-circle" th:src="@{${demande.getUser().img}}" />
                             </div>
-    
-                            <div class="annonce-title">
-                                Hmida ait embarek
+                            <div class="annonce-title" th:text="${demande.getUser().getNom()}">
                             </div>
-    
                             <div class="annonce-operations">
                                 <a href="#" class="annonce-op supprimer-annonce">Refuser</a>
                                 <a href="#" class="annonce-op accepter-annonce">Accepter</a>
@@ -128,41 +116,9 @@
                         </div>
                     </div>
 
-                    <div class="annonce-container">
-                        <div class="annonce">
-                            Demande 1:
-                            <div class="annonce-image">
-                                <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
-                            </div>
-    
-                            <div class="annonce-title">
-                                Hmida ait embarek
-                            </div>
-    
-                            <div class="annonce-operations">
-                                <a href="#" class="annonce-op supprimer-annonce">Refuser</a>
-                                <a href="#" class="annonce-op accepter-annonce">Accepter</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="annonce-container">
-                        <div class="annonce">
-                            Demande 1:
-                            <div class="annonce-image">
-                                <img class="image-cover-circle" src="./img/consult-profile-image.png" alt="">
-                            </div>
-    
-                            <div class="annonce-title">
-                                Hmida ait embarek
-                            </div>
-    
-                            <div class="annonce-operations">
-                                <a href="#" class="annonce-op supprimer-annonce">Refuser</a>
-                                <a href="#" class="annonce-op accepter-annonce">Accepter</a>
-                            </div>
-                        </div>
-                    </div>
+
+
 
                 </div>
             </div>
